@@ -5,6 +5,7 @@ const statusLine = document.querySelector("#status");
 const copyButton = document.querySelector("#copy");
 const downloadButton = document.querySelector("#download");
 const resetButton = document.querySelector("#reset");
+const storageKey = "profile-card-forge-profile";
 
 const defaults = {
   name: "Emir Ertunc",
@@ -29,6 +30,14 @@ function readProfile() {
     links: String(formData.get("links") || "").trim(),
     theme: String(formData.get("theme") || "mint"),
   };
+}
+
+function writeProfile(profile) {
+  Object.entries(profile).forEach(([key, value]) => {
+    const field = form.elements[key];
+    if (!field) return;
+    field.value = value;
+  });
 }
 
 function splitList(value) {
@@ -109,6 +118,7 @@ function updatePreview() {
   const profile = readProfile();
   renderCard(profile);
   output.value = renderMarkdown(profile);
+  localStorage.setItem(storageKey, JSON.stringify(profile));
 }
 
 function setStatus(message) {
@@ -120,15 +130,8 @@ function setStatus(message) {
 }
 
 function resetForm() {
-  Object.entries(defaults).forEach(([key, value]) => {
-    const field = form.elements[key];
-    if (!field) return;
-    if (field instanceof RadioNodeList) {
-      field.value = value;
-    } else {
-      field.value = value;
-    }
-  });
+  writeProfile(defaults);
+  localStorage.removeItem(storageKey);
   updatePreview();
   setStatus("Defaults restored.");
 }
@@ -159,5 +162,14 @@ form.addEventListener("input", updatePreview);
 copyButton.addEventListener("click", copyMarkdown);
 downloadButton.addEventListener("click", downloadMarkdown);
 resetButton.addEventListener("click", resetForm);
+
+try {
+  const savedProfile = JSON.parse(localStorage.getItem(storageKey) || "null");
+  if (savedProfile && typeof savedProfile === "object") {
+    writeProfile({ ...defaults, ...savedProfile });
+  }
+} catch {
+  localStorage.removeItem(storageKey);
+}
 
 updatePreview();
