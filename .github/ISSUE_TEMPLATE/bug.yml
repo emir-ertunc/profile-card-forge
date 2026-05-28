@@ -1,0 +1,29 @@
+name: Bug report
+description: Report a reproducible problem.
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      placeholder: Chrome 126, Firefox 127, Safari 18
+  - type: textarea
+    id: notes
+    attributes:
+      label: Extra context
+      description: Screenshots, steps, or related links.

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Profile Card Forge</title>
+    <meta
+      name="description"
+      content="Build a clean GitHub profile README card with live preview and Markdown export."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Profile card editor">
+        <div class="editor-panel">
+          <div class="panel-heading">
+            <p class="eyebrow">GitHub README tool</p>
+            <h1>Profile Card Forge</h1>
+          </div>
+
+          <form id="profile-form" class="profile-form">
+            <label>
+              Display name
+              <input id="name" name="name" autocomplete="name" value="Emir Ertunc">
+            </label>
+
+            <label>
+              Short title
+              <input id="title" name="title" value="Frontend developer and software engineering student">
+            </label>
+
+            <label>
+              Current focus
+              <textarea id="focus" name="focus" rows="3">Building practical web tools, learning clean architecture, and improving UI quality.</textarea>
+            </label>
+
+            <label>
+              Tech stack
+              <input id="stack" name="stack" value="JavaScript, TypeScript, React, CSS, Node.js">
+            </label>
+
+            <div class="field-grid">
+              <label>
+                Location
+                <input id="location" name="location" value="Turkey">
+              </label>
+              <label>
+                GitHub username
+                <input id="github" name="github" value="emir-ertunc">
+              </label>
+            </div>
+
+            <label>
+              Links
+              <input id="links" name="links" value="Portfolio: https://example.com, LinkedIn: https://linkedin.com">
+            </label>
+
+            <fieldset>
+              <legend>Theme</legend>
+              <div class="segmented" role="radiogroup" aria-label="Theme">
+                <label>
+                  <input type="radio" name="theme" value="mint" checked>
+                  Mint
+                </label>
+                <label>
+                  <input type="radio" name="theme" value="ink">
+                  Ink
+                </label>
+                <label>
+                  <input type="radio" name="theme" value="coral">
+                  Coral
+                </label>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="preview-panel">
+          <div class="toolbar" aria-label="Actions">
+            <button id="copy" type="button">Copy Markdown</button>
+            <button id="download" type="button">Download</button>
+            <button id="reset" type="button">Reset</button>
+          </div>
+
+          <article id="card" class="profile-card theme-mint" aria-label="Profile card preview"></article>
+
+          <label class="output-label" for="markdown-output">Markdown output</label>
+          <textarea id="markdown-output" rows="11" readonly></textarea>
+          <p id="status" class="status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
