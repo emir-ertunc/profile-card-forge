@@ -16,6 +16,8 @@ Profile Card Forge is a small browser tool for building a polished GitHub profil
 2. Fill in your profile details, stack, and links.
 3. Copy the generated Markdown into your GitHub profile README.
 
+See [sample-output.md](docs/sample-output.md) for an example generated profile card.
+
 ## Roadmap
 
 - Add more card layouts
