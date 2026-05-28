@@ -2,6 +2,8 @@
 
 Profile Card Forge is a small browser tool for building a polished GitHub profile README card. It keeps the output simple, copyable, and easy to customize without requiring a build step.
 
+Live demo: https://emir-ertunc.github.io/profile-card-forge/
+
 ## Features
 
 - Live preview while editing profile details
